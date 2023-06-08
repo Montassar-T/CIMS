@@ -1,0 +1,152 @@
+{% extends 'pages/base.html' %} {% load static %} {% block head%}
+
+<link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
+<title>Bureautique</title>
+{% endblock %} {% block content %} {% if messages %} {% for item in messages%}
+
+<div
+  id="message"
+  class="alert p-4 alert-danger mb-md-3   me-md-3 position-fixed bottom-0 end-0 w-30  mb-0 text-center alert-dismissible fade show"
+  role="alert"
+>
+  <h5>{{item}}</h5>
+  <br />
+  <p>Merci de remplir le formulaire correctement</p>
+
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endfor %} {% endif %}
+<!-- Main -->
+<main>
+  <div class="container-fluid micro">
+    <div class="row">
+      <h1 class="display-1">Formation Microsoft 365</h1>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <div class="row">
+      <div class="col intro my-5">
+        <h4 style="color: #071a52">
+          DÉVELOPPEZ VOTRE EXPERTISE DU POSTE DE TRAVAIL MICROSOFT 365 GRÂCE À
+          NOS PARCOURS DE FORMATIONS:
+        </h4>
+        <p id="main_para" class="p-2">
+          <b>Le CIMS</b> offre une gamme de formation bureautique et vous
+          présente les techniques sur les logiciels qui vous sont utiles<br />
+          dans une logique « métier ».<br />
+          Pour optimiser l'utilisation ou maintenir à niveau des personnes
+          n'ayant pas bénéficié d'une formation bureautique pendant la phase de
+          formation initiale. Ces outils permettent aussi de tirer parti au
+          mieux de l'utilisation d'Internet (Internet Explorer, Firefox...).<br />
+        </p>
+      </div>
+    </div>
+
+    <div class="row my-5 d-flex justify-content-center">
+      <div class="col-xl-6 col-lg-10 my-5">
+        <img
+          src="{% static 'pages/multimedia/36146508.svg' %}"
+          width="100%"
+          class="image-fluid"
+          alt=""
+        />
+      </div>
+      <div class="col-xl-6 col-lg-10 mb-5">
+        <h4 id="header" style="text-align: center">
+          Bulletin d'
+          <span style="color: #17b978; font-size: 25px">Inscription</span>
+        </h4>
+        <form
+          method="post"
+          class="row col-lg-10 col-md-8 rounded-2 border mx-auto border-2 mb-5 py-5 needs-validation"
+          novalidate
+        >
+          {% csrf_token %}
+
+          <div class="mb-3 col-6">
+            <label class="form-label">Nom:</label>
+            <input type="text" class="form-control" name="nom" value="{{nom}}" required />
+            <div class="invalid-feedback">Saisir votre nom</div>
+          </div>
+          <div class="mb-3 col-6">
+            <label class="form-label">Prénom :</label>
+            <input type="text" class="form-control" name="prenom" value="{{prenom}}"  required />
+            <div class="invalid-feedback">Saisir votre prénom</div>
+          </div>
+          <div class="mb-3 col-md-6 col-sm-12">
+            <label class="form-label">Telephone:</label>
+            <input
+              type="tel"
+              class="form-control"
+              name="telephone"
+              pattern="[0-9]{8}"
+              value="{{telephone}}"
+              required
+            />
+            <div class="invalid-feedback">Saisir votre telephone</div>
+          </div>
+          <div class="mb-3 col-md-6 col-sm-12">
+            <label class="form-label">Cin:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="cin"
+              pattern="[0-9]{8}"
+              required
+            />
+            <div class="invalid-feedback">Saisir votre numero de cin</div>
+          </div>
+          <div class="mb-3 col-md-6 col-sm-12">
+            <label class="form-label">Grade:</label>
+            <input type="text" class="form-control" name="grade" value="{{grade}}" required />
+            <div class="invalid-feedback">Saisir votre grade</div>
+          </div>
+          <div class="mb-3 col-md-6 col-sm-12">
+            <label class="form-label">Etablissement:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="etablissement"
+              required
+            />
+            <div class="invalid-feedback">Saisir votre etablissement</div>
+          </div>
+          <div class="mb-3 col-md-12">
+            <label class="form-label">Email :</label>
+            <input type="email" class="form-control" name="email" value="{{etablissement}}" required />
+            <div class="invalid-feedback">Saisir votre email</div>
+          </div>
+
+          <div class="mb-4 col-md-6">
+            <label class="form-label">Thème Demande:</label>
+            <select class="form-select" name="theme">
+              <option value="Word 2022">Word 2022</option>
+              <option value="Excel">Excel</option>
+              <option value="Power point">Power point</option>
+              <option value="Access">Access</option>
+            </select>
+          </div>
+          <div class="mb-4 col-md-6">
+            <label class="form-label">Niveau:</label>
+            <select class="form-select" name="niveau">
+              <option value="Initiation">Initiation</option>
+              <option value="Niveau ii">Niveau II</option>
+              <option value="Expert">Expert</option>
+            </select>
+          </div>
+
+          <button class="btn btn-primary w-50 m-auto mt-2" type="submit">
+            Envoyer
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

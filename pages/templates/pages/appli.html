@@ -1,0 +1,142 @@
+{% extends 'pages/base.html' %} {% load static %} {% block head%}
+
+<link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
+<title>Applicative</title>
+{% endblock %} {% block content %}
+
+<!-- Main -->
+{% if messages %}
+{% for item in messages%}
+
+<div id="message" class="alert p-4 alert-danger mb-md-3   me-md-3 position-fixed bottom-0 end-0 w-30  mb-0 text-center alert-dismissible fade show" role="alert">
+  <h5>{{item}}</h5>
+  <br>
+  <p>Merci de remplir le formulaire correctement</p>
+  
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+  
+
+{% endif %}
+<main>
+  <div class="container-fluid micro">
+    <div class="row">
+      <h1 class="display-1">Formation Applicative</h1>
+    </div>
+  </div>
+
+  <div class="container mb-5">
+    <div class="row">
+      <div class="col-lg-12 intro my-5">
+        <h4 style="color: #071a52">
+          DÉVELOPPEZ VOTRE EXPERTISE <br />
+          D'APPLICATION DE GESTION HOPITALIERE:
+        </h4>
+        <p id="main_para" class="p-2">
+          <b>Le CIMS</b> offre une gamme de formation applicative et vous
+          présente les techniques sur les logiciels qui vous sont utiles<br />Maîtriser
+          vos outils applicatives, c’est vous assurer un gain de temps et de
+          productivité considérable. C’est aussi faciliter votre travail au
+          quotidien et valoriser votre efficacité personnelle.
+        </p>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="col-xl-6 col-lg-10 my-5">
+        <img
+          src="{% static 'pages/multimedia/applica.svg' %}"
+          width="100%"
+          class="image-fluid"
+          alt=""
+        />
+      </div>
+      <div class="col-xl-6 col-lg-10 mb-5">
+        <h4 id="header" style="text-align: center">
+          Bulletin d'
+          <span style="color: #17b978; font-size: 25px">Inscription</span>
+        </h4>
+        <form
+          method="post"
+          class="row col-lg-10 col-md-8 rounded-2 border mx-auto border-2 mb-5 py-5 needs-validation"
+          novalidate
+        >
+          {% csrf_token %}
+
+          <div class="mb-3 col-6">
+            <label class="form-label">Nom:</label>
+            <input type="text" class="form-control" value="{{nom}}" name="nom" required />
+            <div class="invalid-feedback">Saisir votre nom</div>
+          </div>
+          <div class="mb-3 col-6">
+            <label class="form-label">Prénom :</label>
+            <input type="text" class="form-control" value="{{prenom}}" name="prenom" required />
+            <div class="invalid-feedback">Saisir votre prénom</div>
+          </div>
+          <div class="mb-3 col-md-6 col-sm-12">
+            <label class="form-label">Telephone:</label>
+            <input
+              type="tel"
+              class="form-control"
+              name="telephone"
+              pattern="[0-9]{8}"
+              value="{{telephone}}"
+              required
+            />
+            <div class="invalid-feedback">Saisir votre telephone</div>
+          </div>
+          <div class="mb-3 col-md-6 col-sm-12">
+            <label class="form-label">Cin:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="cin"
+              pattern="[0-9]{8}"
+              required
+             
+            />
+            <div class="invalid-feedback">Saisir votre numero de cin</div>
+          </div>
+          <div class="mb-3 col-md-6 col-sm-12">
+            <label class="form-label">Grade:</label>
+            <input type="text" class="form-control" name="grade" value="{{grade}}" required />
+            <div class="invalid-feedback">Saisir votre grade</div>
+          </div>
+          <div class="mb-3 col-md-6 col-sm-12">
+            <label class="form-label">Etablissement:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="etablissement"
+              value="{{etablissement}}"
+              required
+            />
+            <div class="invalid-feedback">Saisir votre etablissement</div>
+          </div>
+          <div class="mb-3 col-md-12">
+            <label class="form-label">Email :</label>
+            <input type="email" class="form-control" value="{{email}}" name="email" required />
+            <div class="invalid-feedback">Saisir votre email</div>
+          </div>
+          <div class="mb-4">
+            <label for="theme" class="form-label">Thème Demande:</label>
+            <select
+              class="form-select"
+              name="theme"
+              aria-label="Default select example"
+            >
+              <option value="santelab">SANTELAB</option>
+              <option value="anapath">ANAPATH</option>
+              <option value="dmi">DMI</option>
+            </select>
+          </div>
+          <button class="btn btn-primary w-50 m-auto mt-2" type="submit">
+            Envoyer
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+ {% endblock %}

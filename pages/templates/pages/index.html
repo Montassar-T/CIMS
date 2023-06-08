@@ -1,0 +1,109 @@
+{% extends 'pages/base.html' %} {% load static %} {% block head%}
+<link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
+<title>Acceuil</title>
+{% endblock %} {% block content %}
+
+<!-- Main -->
+<main>
+  {% if nom %}
+
+  <div id="message" class="alert p-4 alert-success mb-md-3   me-md-3 position-fixed bottom-0 end-0 w-30  mb-0 text-center alert-dismissible fade show" role="alert">
+    <h4>Merci {{nom}} {{prenom}} !</h4>
+    <br>
+    <p>nous avons reçu votre demande et nous vous répondrons sous peu</p>
+    
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  
+    
+  
+  {% endif %}
+  <div class="container-fluid micro">
+    <div class="row">
+      <h1 class="display-1">LE CIMS</h1>
+      <h4>Centre Informatique du Ministère de la Santé</h4>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <table class="my-5">
+          <tr>
+            <th>Site web</th>
+            <td>
+              <a id="link" href="http://www.cims.tn"
+                ><b>http://www.cims.tn</b></a
+              >
+            </td>
+          </tr>
+          <tr>
+            <th>Secteurs</th>
+            <td>Services et conseil informatiques</td>
+          </tr>
+          <tr>
+            <th>Taille de l'entreprise</th>
+            <td>201-500 employés</td>
+          </tr>
+          <tr>
+            <th>Siège social</th>
+            <td>Tunis</td>
+          </tr>
+          <tr>
+            <th>Type</th>
+            <td>Administration publique</td>
+          </tr>
+          <tr>
+            <th>Fondée en</th>
+            <td>1992</td>
+          </tr>
+          <tr>
+            <th>Domaines</th>
+            <td>
+              Système d'information hospitalier, Services numériques de santé et
+              Formations en santé numérique
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-10 col-lg-6 col-sm-12">
+        <p id="main_para" class="my-5">
+          Le Centre Informatique du Ministère de la santé (CIMS) a été créé en
+          1992 en tant qu’établissement public à caractère non administratif
+          relevant du Ministère de la santé.<br />
+          Il est acteur majeur dans le domaine de la e-santé en Tunisie, ses
+          missions principales englobent du développement jusqu‘au déploiement
+          du système d’information hospitalier et des services numériques ainsi
+          que l’assistance et la formation continue.<br />
+        </p>
+      </div>
+      <div class="col-lg-6">
+        <img
+          src="{% static 'pages/multimedia/cims.svg' %}"
+          class="img-fluid"
+          alt="Responsive image"
+        />
+      </div>
+    </div>
+    <div class="row my-5">
+      <div class="col-lg-6 order-lg-1 col-sm-10 order-5">
+        <img
+          src="{% static 'pages/multimedia/28849006.svg' %}"
+          class="img-fluid"
+          alt="Responsive image"
+        />
+      </div>
+      <div class="col-lg-6 order-lg-5 col-sm-10 order-1 ">
+        <p id="main_para" class="my-5 ">
+          Le CIMS met à la disposition des structures sanitaires publiques et
+          des professionnels de santé publique une expertise multidisciplinaire
+          leurs permettant l’assistance et l’accompagnement dans la conception,
+          le développement et la mise en œuvre de leurs systèmes d’information
+          spécifiques à portée nationale.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

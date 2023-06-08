@@ -1,0 +1,154 @@
+{% extends 'pages/base.html' %} {% load static %} {% block head%}
+
+<link rel="stylesheet" href="{% static 'pages/css/style.css' %}" />
+<title>Stage</title>
+{% endblock %} {% block content%}
+
+<!-- Main -->
+
+
+<main>
+  {% if messages %}
+  {% for item in messages%}
+
+  <div id="message" class="alert p-4 alert-danger mb-md-3   me-md-3 position-fixed bottom-0 end-0 w-30  mb-0 text-center alert-dismissible fade show" role="alert">
+    <h4>{{item}}</h4>
+    <br>
+    <p>Merci de remplir le formulaire correctement</p>
+    
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+  
+    
+  
+  {% endif %}
+  
+  <div class="container-fluid">
+   
+
+    <div class="row micro">
+      <h1 class="display-1">Offre de Stage</h1>
+    </div>
+  
+  </div>
+
+  <div class="container">
+    <div class="row mb-5 mt-0 d-flex justify-content-center align-items-center">
+      <div class="col-12">
+        <p id="main_para" style="font-size: 22px" class="my-4">
+          En tant qu’opérateur public et centre de compétences en santé
+          numérique en Tunisie, <b style="font-size: 22px">le CIMS</b> offre aux
+          étudiants et aux novices qui débutent sur le marché du travail
+          l'occasion d'apprendre en terrain concret et de mettre en pratique
+          leurs connaissances dans des situations réelles.
+        </p>
+      </div>
+    </div>
+  </div>
+ 
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <img
+          src=" {% static 'pages/multimedia/forma.svg' %}"
+          width="100%"
+          alt=""
+          class="image-fluid"
+        />
+      </div>
+      <div class="col-lg-6">
+        <h4 id="header" style="text-align: center">
+          Demande de <span style="color: #17b978; font-size: 25px">Stage</span>
+        </h4>
+        <div class="row my-5 justify-content-center">
+          <form
+            method="post" action="{% url 'stage' %}"
+            class="row col-10 rounded-2 border border-2 py-5 needs-validation"
+            novalidate
+          >
+            {% csrf_token %}
+
+            <div class="mb-3 col-md-6 col-sm-12">
+              <label class="form-label">Nom:</label>
+              <input type="text" class="form-control" name="nom"  value="{{nom}}" required />
+              <div class="invalid-feedback">Saisir votre nom</div>
+            </div>
+
+            <div class="mb-3 col-md-6 col-sm-12">
+              <label class="form-label">Prénom :</label>
+              <input type="text" class="form-control" name="prenom" value="{{prenom}}" required />
+              <div class="invalid-feedback">Saisir votre prénom</div>
+            </div>
+
+            <div class="mb-3 col-md-6 col-sm-12">
+              <label class="form-label">Date de naissance:</label>
+              <input
+                type="date"
+                class="form-control"
+                name="date_naissance"
+                value="{{date_naissance}}"
+                required
+              />
+              <div class="invalid-feedback">Saisir votre date de naissance</div>
+            </div>
+            <div class="mb-3 col-md-6 col-sm-12">
+              <label class="form-label">Telephone:</label>
+              <input
+                type="tel"
+                class="form-control"
+                name="telephone"
+                pattern="[0-9]{8}"
+                required
+              />
+              <div class="invalid-feedback">Saisir votre telephone</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email :</label>
+              <input type="email" class="form-control" name="email" value="{{email}}" required />
+              <div class="invalid-feedback">Saisir votre email</div>
+            </div>
+
+            <div class="mb-3 col-md-6 col-sm-12">
+              <label class="form-label">Etablissement :</label>
+              <input
+                type="text"
+                class="form-control"
+                name="etablissement"
+                value="{{etablissement}}""
+                required
+              />
+              <div class="invalid-feedback">Saisir votre etablissement</div>
+            </div>
+
+            <div class="mb-3 col-md-6 col-sm-12">
+              <label class="form-label">Classe :</label>
+              <input type="text" class="form-control" name="classe" value="{{classe}}" required />
+              <div class="invalid-feedback">Saisir votre etablissement</div>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label">Type de stage :</label>
+              <select
+                class="form-select"
+                name="type_stage"
+                aria-label="Default select example"
+              >
+                <option value="initiation">Initiation</option>
+                <option value="perfectionnement">Perfectionnement</option>
+                <option value="pfe">Pfe</option>
+              </select>
+            </div>
+
+            <button class="btn btn-primary w-50 m-auto mb-4" type="submit">
+              Envoyer
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+ {% endblock %}
